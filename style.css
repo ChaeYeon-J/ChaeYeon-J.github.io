@@ -1,0 +1,132 @@
+/* 공통 */
+body {
+    background: #e5e5e5;
+    display: flex;
+    /*.window 중앙 정렬(display: flex; 선언 이후 자식 요소 중앙 정렬 가능)*/
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Lato', 'Orbit', sans-serif;
+}
+
+/* 브라우저 창 */
+.window {
+    width: 950px;
+    height: 600px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    /*자식 요소, 헤더 - 콘텐츠 순으로 위에서부터 정렬될 수 있도록*/
+    display: flex;
+    flex-direction: column;
+    /*모서리에 튀어나오는 부분 방지*/
+    overflow: hidden;
+}
+
+/* 헤더 */
+.browser-header {
+    height: 45px;
+    background: #2b2b2b;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.tab-label {
+    background: #444;
+    color: white;
+    padding: 4px 15px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+}
+
+.dots { display: flex; gap: 8px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+/* window의 남은 공간 모두 사용하기 */
+.content-area { display: flex; flex: 1; overflow: hidden; }
+
+.sidebar {
+    width: 200px;
+    background: #1b2635;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.sidebar button {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: large;
+    padding: 15px 25px;
+    text-align: left;
+    cursor: pointer;/*커서 바꾸기*/
+    transition: 0.2s;
+}
+
+.sidebar button:hover { background: #233246; }
+.sidebar button.active { border-left: 4px solid #000; background: #f1f5f9; color: #1b2635; } /*왼쪽 선 긋고, 선택 박스 알 수 있게 색 바꾸면 좋을 듯, 글자 안보임 수정*/
+
+.main-panel {
+    flex: 1;
+    padding: 40px;
+    background: #f1f5f9;
+    overflow-y: auto;
+}
+
+/* 콘텐츠 박스에 모두 공통 */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+/*나머지 탭 숨기기*/
+.tab-content { display: none; }
+/*탭 나타나게*/
+.tab-content.active { display: block; }
+.tab-content h1 { margin: 5px 0 20px 0; }
+.mt-30 { margin-top: 30px !important; }
+.mt-40 { margin-top: 40px !important; }
+.center-text { text-align: center; }
+
+/* 프로필 */
+.profile-header { display: flex; align-items: center; margin-bottom: 20px; }
+.profile-image { width: 70px; border-radius: 20%; margin-right: 15px; }
+.last-name { color: rgba(0, 0, 0, 0.2); font-size: large; }
+.first-name { font-weight: 900; }
+
+/* 기술 스택 */
+.skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } /*2개 같은 크기 배열 필요*/
+.skill-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.skill-row span { width: 90px; } /*바 같은 위치에서 시작*/
+.skill-bar { flex: 1; height: 8px; background: #e5e7eb; border-radius: 5px; }
+.skill-fill { height: 100%; background: #2563eb; border-radius: 5px; } /*부모요소 높이와 동일하게 맞추기*/
+
+/* 관심사 그리드 */
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /*3개로 분리 필요*/
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.interest-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /*비율 깨지면 안됨*/
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.interest-photo:hover { transform: scale(1.05); filter: brightness(0.9); }
